@@ -3,8 +3,8 @@ import path from 'path';
 import fs from 'fs';
 import logger from '../config/logger.js';
 
-// Setup upload directory
-const UPLOAD_DIR = './uploads';
+// Setup upload directory (can be overridden in production for persistent storage volumes)
+const UPLOAD_DIR = process.env.UPLOAD_DIR || './uploads';
 if (!fs.existsSync(UPLOAD_DIR)) {
   fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 }
